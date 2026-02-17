@@ -1,4 +1,4 @@
-CC              = gcc
+'CC              = gcc
 CFLAGS		= -Wall -O3 -fPIC
 SEED            = 1
 DUMPFST         = 1
@@ -51,4 +51,4 @@ ahb_apb: link_verilator $(DUTLIB) $(TBSRC)
 		-L-lphobos2-ldc-shared -L-ldruntime-ldc-shared -L-ldl -L-lstdc++
 
 run: ahb_apb
-	./ahb_apb +UVM_TESTNAME=ahb_apb.directed_test +UVM_VERBOSITY=$(VERBOSITY) # +UVM_OBJECTION_TRACE
+	./ahb_apb +UVM_TESTNAME=ahb_apb_test.directed_test +UVM_VERBOSITY=$(VERBOSITY) # +UVM_OBJECTION_TRACE
