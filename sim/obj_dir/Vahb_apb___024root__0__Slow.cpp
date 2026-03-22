@@ -44,26 +44,22 @@ VL_ATTR_COLD void Vahb_apb___024root___eval_settle(Vahb_apb___024root* vlSelf) {
 #ifdef VL_DEBUG
             Vahb_apb___024root___dump_triggers__stl(vlSelfRef.__VstlTriggered, "stl"s);
 #endif
-            VL_FATAL_MT("../rtl/ahb_apb.v", 1, "", "Settle region did not converge after 100 tries");
+            VL_FATAL_MT("../rtl/ahb_apb.v", 1, "", "DIDNOTCONVERGE: Settle region did not converge after '--converge-limit' of 100 tries");
         }
         __VstlIterCount = ((IData)(1U) + __VstlIterCount);
-    } while (Vahb_apb___024root___eval_phase__stl(vlSelf));
+        vlSelfRef.__VstlPhaseResult = Vahb_apb___024root___eval_phase__stl(vlSelf);
+        vlSelfRef.__VstlFirstIteration = 0U;
+    } while (vlSelfRef.__VstlPhaseResult);
 }
 
-VL_ATTR_COLD void Vahb_apb___024root___eval_triggers__stl(Vahb_apb___024root* vlSelf) {
-    VL_DEBUG_IF(VL_DBG_MSGF("+    Vahb_apb___024root___eval_triggers__stl\n"); );
+VL_ATTR_COLD void Vahb_apb___024root___eval_triggers_vec__stl(Vahb_apb___024root* vlSelf) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vahb_apb___024root___eval_triggers_vec__stl\n"); );
     Vahb_apb__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     auto& vlSelfRef = std::ref(*vlSelf).get();
     // Body
     vlSelfRef.__VstlTriggered[0U] = ((0xfffffffffffffffeULL 
-                                      & vlSelfRef.__VstlTriggered
-                                      [0U]) | (IData)((IData)(vlSelfRef.__VstlFirstIteration)));
-    vlSelfRef.__VstlFirstIteration = 0U;
-#ifdef VL_DEBUG
-    if (VL_UNLIKELY(vlSymsp->_vm_contextp__->debug())) {
-        Vahb_apb___024root___dump_triggers__stl(vlSelfRef.__VstlTriggered, "stl"s);
-    }
-#endif
+                                      & vlSelfRef.__VstlTriggered[0U]) 
+                                     | (IData)((IData)(vlSelfRef.__VstlFirstIteration)));
 }
 
 VL_ATTR_COLD bool Vahb_apb___024root___trigger_anySet__stl(const VlUnpacked<QData/*63:0*/, 1> &in);
@@ -115,7 +111,12 @@ VL_ATTR_COLD bool Vahb_apb___024root___eval_phase__stl(Vahb_apb___024root* vlSel
     // Locals
     CData/*0:0*/ __VstlExecute;
     // Body
-    Vahb_apb___024root___eval_triggers__stl(vlSelf);
+    Vahb_apb___024root___eval_triggers_vec__stl(vlSelf);
+#ifdef VL_DEBUG
+    if (VL_UNLIKELY(vlSymsp->_vm_contextp__->debug())) {
+        Vahb_apb___024root___dump_triggers__stl(vlSelfRef.__VstlTriggered, "stl"s);
+    }
+#endif
     __VstlExecute = Vahb_apb___024root___trigger_anySet__stl(vlSelfRef.__VstlTriggered);
     if (__VstlExecute) {
         Vahb_apb___024root___eval_stl(vlSelf);

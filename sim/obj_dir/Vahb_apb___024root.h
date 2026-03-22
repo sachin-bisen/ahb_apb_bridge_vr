@@ -29,9 +29,13 @@ class alignas(VL_CACHE_LINE_BYTES) Vahb_apb___024root final {
     CData/*2:0*/ AHP_to_APB_Bridge__DOT__next_state;
     CData/*0:0*/ AHP_to_APB_Bridge__DOT__H_Write_Reg;
     CData/*0:0*/ __VstlFirstIteration;
+    CData/*0:0*/ __VstlPhaseResult;
     CData/*0:0*/ __VicoFirstIteration;
+    CData/*0:0*/ __VicoPhaseResult;
     CData/*0:0*/ __Vtrigprevexpr___TOP__H_CLK__0;
     CData/*0:0*/ __Vtrigprevexpr___TOP__H_RESET_n__0;
+    CData/*0:0*/ __VactPhaseResult;
+    CData/*0:0*/ __VnbaPhaseResult;
     VL_IN(H_WDATA,31,0);
     VL_IN(H_ADDR,31,0);
     VL_IN(P_RDATA,31,0);

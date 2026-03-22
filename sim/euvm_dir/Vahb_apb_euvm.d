@@ -41,7 +41,6 @@ extern(C++) {
     void* rootp;
     this(VerilatedContext* contextp, const char* name = "TOP".ptr);
     ~this();
-    final void eval();
     final void eval_step();
     final void eval_end_step();
     final bool eventsPending();
@@ -114,7 +113,13 @@ class DVahb_apb: Entity {
   VlOutExport!(32) P_ADDR;
   VlOutExport!(32) H_RDATA;
   final void eval() {
-    _dut.eval();
+    _dut.eval_step();
+  }
+  final void eval_step() {
+    _dut.eval_step();
+  }
+  final void eval_end_step() {
+    _dut.eval_end_step();
   }
   final void finish() {
     finalize(_dut);

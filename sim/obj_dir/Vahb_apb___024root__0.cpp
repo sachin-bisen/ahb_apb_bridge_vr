@@ -4,24 +4,14 @@
 
 #include "Vahb_apb__pch.h"
 
-#ifdef VL_DEBUG
-VL_ATTR_COLD void Vahb_apb___024root___dump_triggers__ico(const VlUnpacked<QData/*63:0*/, 1> &triggers, const std::string &tag);
-#endif  // VL_DEBUG
-
-void Vahb_apb___024root___eval_triggers__ico(Vahb_apb___024root* vlSelf) {
-    VL_DEBUG_IF(VL_DBG_MSGF("+    Vahb_apb___024root___eval_triggers__ico\n"); );
+void Vahb_apb___024root___eval_triggers_vec__ico(Vahb_apb___024root* vlSelf) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vahb_apb___024root___eval_triggers_vec__ico\n"); );
     Vahb_apb__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     auto& vlSelfRef = std::ref(*vlSelf).get();
     // Body
     vlSelfRef.__VicoTriggered[0U] = ((0xfffffffffffffffeULL 
-                                      & vlSelfRef.__VicoTriggered
-                                      [0U]) | (IData)((IData)(vlSelfRef.__VicoFirstIteration)));
-    vlSelfRef.__VicoFirstIteration = 0U;
-#ifdef VL_DEBUG
-    if (VL_UNLIKELY(vlSymsp->_vm_contextp__->debug())) {
-        Vahb_apb___024root___dump_triggers__ico(vlSelfRef.__VicoTriggered, "ico"s);
-    }
-#endif
+                                      & vlSelfRef.__VicoTriggered[0U]) 
+                                     | (IData)((IData)(vlSelfRef.__VicoFirstIteration)));
 }
 
 bool Vahb_apb___024root___trigger_anySet__ico(const VlUnpacked<QData/*63:0*/, 1> &in) {
@@ -39,8 +29,8 @@ bool Vahb_apb___024root___trigger_anySet__ico(const VlUnpacked<QData/*63:0*/, 1>
     return (0U);
 }
 
-extern const VlUnpacked<CData/*0:0*/, 64> Vahb_apb__ConstPool__TABLE_hb75832b7_0;
-extern const VlUnpacked<CData/*2:0*/, 64> Vahb_apb__ConstPool__TABLE_h6908d3be_0;
+extern const VlUnpacked<CData/*0:0*/, 64> Vahb_apb__ConstPool__TABLE_h04bfc850_0;
+extern const VlUnpacked<CData/*2:0*/, 64> Vahb_apb__ConstPool__TABLE_hf5834639_0;
 
 void Vahb_apb___024root___ico_sequent__TOP__0(Vahb_apb___024root* vlSelf) {
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vahb_apb___024root___ico_sequent__TOP__0\n"); );
@@ -58,9 +48,9 @@ void Vahb_apb___024root___ico_sequent__TOP__0(Vahb_apb___024root* vlSelf) {
                                                | (3U 
                                                   == (IData)(vlSelfRef.H_TRANS)))) 
                                            << 3U) | (IData)(vlSelfRef.AHP_to_APB_Bridge__DOT__current_state))));
-    if (Vahb_apb__ConstPool__TABLE_hb75832b7_0[__Vtableidx1]) {
+    if (Vahb_apb__ConstPool__TABLE_h04bfc850_0[__Vtableidx1]) {
         vlSelfRef.AHP_to_APB_Bridge__DOT__next_state 
-            = Vahb_apb__ConstPool__TABLE_h6908d3be_0
+            = Vahb_apb__ConstPool__TABLE_hf5834639_0
             [__Vtableidx1];
     }
 }
@@ -75,6 +65,10 @@ void Vahb_apb___024root___eval_ico(Vahb_apb___024root* vlSelf) {
     }
 }
 
+#ifdef VL_DEBUG
+VL_ATTR_COLD void Vahb_apb___024root___dump_triggers__ico(const VlUnpacked<QData/*63:0*/, 1> &triggers, const std::string &tag);
+#endif  // VL_DEBUG
+
 bool Vahb_apb___024root___eval_phase__ico(Vahb_apb___024root* vlSelf) {
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vahb_apb___024root___eval_phase__ico\n"); );
     Vahb_apb__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
@@ -82,7 +76,12 @@ bool Vahb_apb___024root___eval_phase__ico(Vahb_apb___024root* vlSelf) {
     // Locals
     CData/*0:0*/ __VicoExecute;
     // Body
-    Vahb_apb___024root___eval_triggers__ico(vlSelf);
+    Vahb_apb___024root___eval_triggers_vec__ico(vlSelf);
+#ifdef VL_DEBUG
+    if (VL_UNLIKELY(vlSymsp->_vm_contextp__->debug())) {
+        Vahb_apb___024root___dump_triggers__ico(vlSelfRef.__VicoTriggered, "ico"s);
+    }
+#endif
     __VicoExecute = Vahb_apb___024root___trigger_anySet__ico(vlSelfRef.__VicoTriggered);
     if (__VicoExecute) {
         Vahb_apb___024root___eval_ico(vlSelf);
@@ -90,12 +89,8 @@ bool Vahb_apb___024root___eval_phase__ico(Vahb_apb___024root* vlSelf) {
     return (__VicoExecute);
 }
 
-#ifdef VL_DEBUG
-VL_ATTR_COLD void Vahb_apb___024root___dump_triggers__act(const VlUnpacked<QData/*63:0*/, 1> &triggers, const std::string &tag);
-#endif  // VL_DEBUG
-
-void Vahb_apb___024root___eval_triggers__act(Vahb_apb___024root* vlSelf) {
-    VL_DEBUG_IF(VL_DBG_MSGF("+    Vahb_apb___024root___eval_triggers__act\n"); );
+void Vahb_apb___024root___eval_triggers_vec__act(Vahb_apb___024root* vlSelf) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vahb_apb___024root___eval_triggers_vec__act\n"); );
     Vahb_apb__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     auto& vlSelfRef = std::ref(*vlSelf).get();
     // Body
@@ -107,11 +102,6 @@ void Vahb_apb___024root___eval_triggers__act(Vahb_apb___024root* vlSelf) {
                                                         & (~ (IData)(vlSelfRef.__Vtrigprevexpr___TOP__H_CLK__0))))));
     vlSelfRef.__Vtrigprevexpr___TOP__H_CLK__0 = vlSelfRef.H_CLK;
     vlSelfRef.__Vtrigprevexpr___TOP__H_RESET_n__0 = vlSelfRef.H_RESET_n;
-#ifdef VL_DEBUG
-    if (VL_UNLIKELY(vlSymsp->_vm_contextp__->debug())) {
-        Vahb_apb___024root___dump_triggers__act(vlSelfRef.__VactTriggered, "act"s);
-    }
-#endif
 }
 
 bool Vahb_apb___024root___trigger_anySet__act(const VlUnpacked<QData/*63:0*/, 1> &in) {
@@ -216,9 +206,9 @@ void Vahb_apb___024root___nba_sequent__TOP__0(Vahb_apb___024root* vlSelf) {
                                                | (3U 
                                                   == (IData)(vlSelfRef.H_TRANS)))) 
                                            << 3U) | (IData)(vlSelfRef.AHP_to_APB_Bridge__DOT__current_state))));
-    if (Vahb_apb__ConstPool__TABLE_hb75832b7_0[__Vtableidx1]) {
+    if (Vahb_apb__ConstPool__TABLE_h04bfc850_0[__Vtableidx1]) {
         vlSelfRef.AHP_to_APB_Bridge__DOT__next_state 
-            = Vahb_apb__ConstPool__TABLE_h6908d3be_0
+            = Vahb_apb__ConstPool__TABLE_hf5834639_0
             [__Vtableidx1];
     }
 }
@@ -234,8 +224,8 @@ void Vahb_apb___024root___eval_nba(Vahb_apb___024root* vlSelf) {
     }
 }
 
-void Vahb_apb___024root___trigger_orInto__act(VlUnpacked<QData/*63:0*/, 1> &out, const VlUnpacked<QData/*63:0*/, 1> &in) {
-    VL_DEBUG_IF(VL_DBG_MSGF("+    Vahb_apb___024root___trigger_orInto__act\n"); );
+void Vahb_apb___024root___trigger_orInto__act_vec_vec(VlUnpacked<QData/*63:0*/, 1> &out, const VlUnpacked<QData/*63:0*/, 1> &in) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vahb_apb___024root___trigger_orInto__act_vec_vec\n"); );
     // Locals
     IData/*31:0*/ n;
     // Body
@@ -243,16 +233,25 @@ void Vahb_apb___024root___trigger_orInto__act(VlUnpacked<QData/*63:0*/, 1> &out,
     do {
         out[n] = (out[n] | in[n]);
         n = ((IData)(1U) + n);
-    } while ((1U > n));
+    } while ((0U >= n));
 }
+
+#ifdef VL_DEBUG
+VL_ATTR_COLD void Vahb_apb___024root___dump_triggers__act(const VlUnpacked<QData/*63:0*/, 1> &triggers, const std::string &tag);
+#endif  // VL_DEBUG
 
 bool Vahb_apb___024root___eval_phase__act(Vahb_apb___024root* vlSelf) {
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vahb_apb___024root___eval_phase__act\n"); );
     Vahb_apb__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     auto& vlSelfRef = std::ref(*vlSelf).get();
     // Body
-    Vahb_apb___024root___eval_triggers__act(vlSelf);
-    Vahb_apb___024root___trigger_orInto__act(vlSelfRef.__VnbaTriggered, vlSelfRef.__VactTriggered);
+    Vahb_apb___024root___eval_triggers_vec__act(vlSelf);
+#ifdef VL_DEBUG
+    if (VL_UNLIKELY(vlSymsp->_vm_contextp__->debug())) {
+        Vahb_apb___024root___dump_triggers__act(vlSelfRef.__VactTriggered, "act"s);
+    }
+#endif
+    Vahb_apb___024root___trigger_orInto__act_vec_vec(vlSelfRef.__VnbaTriggered, vlSelfRef.__VactTriggered);
     return (0U);
 }
 
@@ -298,17 +297,19 @@ void Vahb_apb___024root___eval(Vahb_apb___024root* vlSelf) {
 #ifdef VL_DEBUG
             Vahb_apb___024root___dump_triggers__ico(vlSelfRef.__VicoTriggered, "ico"s);
 #endif
-            VL_FATAL_MT("../rtl/ahb_apb.v", 1, "", "Input combinational region did not converge after 100 tries");
+            VL_FATAL_MT("../rtl/ahb_apb.v", 1, "", "DIDNOTCONVERGE: Input combinational region did not converge after '--converge-limit' of 100 tries");
         }
         __VicoIterCount = ((IData)(1U) + __VicoIterCount);
-    } while (Vahb_apb___024root___eval_phase__ico(vlSelf));
+        vlSelfRef.__VicoPhaseResult = Vahb_apb___024root___eval_phase__ico(vlSelf);
+        vlSelfRef.__VicoFirstIteration = 0U;
+    } while (vlSelfRef.__VicoPhaseResult);
     __VnbaIterCount = 0U;
     do {
         if (VL_UNLIKELY(((0x00000064U < __VnbaIterCount)))) {
 #ifdef VL_DEBUG
             Vahb_apb___024root___dump_triggers__act(vlSelfRef.__VnbaTriggered, "nba"s);
 #endif
-            VL_FATAL_MT("../rtl/ahb_apb.v", 1, "", "NBA region did not converge after 100 tries");
+            VL_FATAL_MT("../rtl/ahb_apb.v", 1, "", "DIDNOTCONVERGE: NBA region did not converge after '--converge-limit' of 100 tries");
         }
         __VnbaIterCount = ((IData)(1U) + __VnbaIterCount);
         vlSelfRef.__VactIterCount = 0U;
@@ -317,12 +318,14 @@ void Vahb_apb___024root___eval(Vahb_apb___024root* vlSelf) {
 #ifdef VL_DEBUG
                 Vahb_apb___024root___dump_triggers__act(vlSelfRef.__VactTriggered, "act"s);
 #endif
-                VL_FATAL_MT("../rtl/ahb_apb.v", 1, "", "Active region did not converge after 100 tries");
+                VL_FATAL_MT("../rtl/ahb_apb.v", 1, "", "DIDNOTCONVERGE: Active region did not converge after '--converge-limit' of 100 tries");
             }
             vlSelfRef.__VactIterCount = ((IData)(1U) 
                                          + vlSelfRef.__VactIterCount);
-        } while (Vahb_apb___024root___eval_phase__act(vlSelf));
-    } while (Vahb_apb___024root___eval_phase__nba(vlSelf));
+            vlSelfRef.__VactPhaseResult = Vahb_apb___024root___eval_phase__act(vlSelf);
+        } while (vlSelfRef.__VactPhaseResult);
+        vlSelfRef.__VnbaPhaseResult = Vahb_apb___024root___eval_phase__nba(vlSelf);
+    } while (vlSelfRef.__VnbaPhaseResult);
 }
 
 #ifdef VL_DEBUG

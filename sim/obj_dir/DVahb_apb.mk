@@ -2,7 +2,7 @@ include Vahb_apb.mk
 
 EUVMBINDIR = $(dir $(shell which ldc2))
 
-DVahb_apb.a: verilated.o verilated_d.o verilated_threads.o \
+DVahb_apb.a: verilated.o verilated_d.o verilated_threads.o verilated_dpi.o \
 	verilated_fst_c.o verilated_fst_d.o \
 	verilated_vcd_c.o verilated_vcd_d.o \
 	verilated_saif_c.o verilated_saif_d.o \

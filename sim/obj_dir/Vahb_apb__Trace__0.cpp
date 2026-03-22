@@ -21,7 +21,7 @@ void Vahb_apb___024root__trace_chg_0_sub_0(Vahb_apb___024root* vlSelf, Verilated
     Vahb_apb__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     auto& vlSelfRef = std::ref(*vlSelf).get();
     // Body
-    uint32_t* const oldp VL_ATTR_UNUSED = bufp->oldp(vlSymsp->__Vm_baseCode + 1);
+    uint32_t* const oldp VL_ATTR_UNUSED = bufp->oldp(vlSymsp->__Vm_baseCode + 0);
     if (VL_UNLIKELY((vlSelfRef.__Vm_traceActivity[1U]))) {
         bufp->chgCData(oldp+0,(vlSelfRef.AHP_to_APB_Bridge__DOT__current_state),3);
         bufp->chgBit(oldp+1,(vlSelfRef.AHP_to_APB_Bridge__DOT__H_Write_Reg));
