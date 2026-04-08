@@ -36,16 +36,16 @@ class ahb_apb_driver: uvm_component {
 
 	void drive_idle() {
 	
-	ahb_if.H_SEL_APB == 0;
-	ahb_if.H_TRANS == 0; //IDLE RAKHA HAI
-	ahb_if.H_WRITE == 0;
-	ahb_if.H_ADDR == 0;
-	ahb_if.H_WDATA == 0;
-	ahb_if.H_READY_IN == 1;
+	ahb_if.H_SEL_APB = ubvec!1(0);
+	ahb_if.H_TRANS = ubvec!3(0); //IDLE RAKHA HAI
+	ahb_if.H_WRITE = ubvec!1(0);
+	ahb_if.H_ADDR = ubvec!32(0);
+	ahb_if.H_WDATA = ubvec!32(0);
+	ahb_if.H_READY_IN = ubvec!1(0);
 }
 
 	void wait_for_reset_release() {
-	while(ahb_if.H_RESET_n == 0)
+	while(ahb_if.H_RESET_n == ubvec!1(0))
 	       wait(ahb_if.H_CLK.posedge());
 
 	       wait(ahb_if.H_CLK.posedge()); //ek cycle jyada after reset
@@ -55,14 +55,14 @@ class ahb_apb_driver: uvm_component {
 
 	wait(ahb_if.H_CLK.posedge()); //Address Phase
 
-	ahb_if.H_SEL_APB == 1;
-	ahb_if.H_TRANS == 2; //IDLE RAKHA HAI
-	ahb_if.H_WRITE == 1;
-	ahb_if.H_ADDR == addr;
-	ahb_if.H_WDATA == data;	
+	ahb_if.H_SEL_APB = ubvec!1(1);
+	//ahb_if.H_TRANS = ubvec!3(2); //IDLE RAKHA HAI
+	ahb_if.H_WRITE = ubvec!1(1);
+	ahb_if.H_ADDR = addr;
+	ahb_if.H_WDATA = data;	
 
 
-	while(ahb_if.H_READY_OUT == 0)
+	while(ahb_if.H_READY_OUT == ubvec!1(0))
 	     wait(ahb_if.H_CLK.posedge());
 
 
@@ -75,12 +75,12 @@ class ahb_apb_driver: uvm_component {
 
 	wait(ahb_if.H_CLK.posedge());
 
-	ahb_if.H_SEL_APB == 1;
-	ahb_if.H_TRANS == 2; //NONSEQ
-	ahb_if.H_WRITE == 0;
-	ahb_if.H_ADDR == addr;	
+	ahb_if.H_SEL_APB = ubvec!1(1);
+	//ahb_if.H_TRANS = ubvec!3(2); //NONSEQ
+	ahb_if.H_WRITE = ubvec!1(0);
+	ahb_if.H_ADDR = addr;	
 
-	while(ahb_if.H_READY_OUT == 0)
+	while(ahb_if.H_READY_OUT == ubvec!1(0))
 	     wait(ahb_if.H_CLK.posedge());
 
 	     rdata = ahb_if.H_RDATA;

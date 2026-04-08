@@ -52,6 +52,8 @@ class ahb_apb_tb_top : Entity
 
     DVahb_apb dut;
 
+    ahb_apb_intf ahb_if;
+
     // trace setup
     void opentrace(string fstname) {
         if (_trace is null) {
