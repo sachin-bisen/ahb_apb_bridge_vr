@@ -40,9 +40,7 @@ class ahb_apb_scoreboard: uvm_component
         ahb_wr_data  = data;
         ahb_wr_valid = true;
 
-  // uvm_info("SCOREBOARD", format("AHB WRITE received | addr=0x%08x data=0x%08x", addr, data), UVM_MEDIUM);
-
-   	check_write();
+        check_write();
 
 }
 
@@ -52,8 +50,6 @@ class ahb_apb_scoreboard: uvm_component
         apb_wr_data  = data;
         apb_wr_valid = true;
 
-        //uvm_info("SCOREBOARD", format("APB WRITE received | addr=0x%08x data=0x%08x", addr, data), UVM_MEDIUM);
-
         check_write();
 }
 
@@ -61,55 +57,55 @@ class ahb_apb_scoreboard: uvm_component
         {
         if (ahb_wr_valid && apb_wr_valid)
         {
-            if (ahb_wr_addr == apb_wr_addr && ahb_wr_data == apb_wr_data)
-            {
- uvm_info("SCOREBOARD", "PASS: AHB write matches APB write", UVM_LOW);
-            }
-            else
-            {
- uvm_error("SCOREBOARD", format("FAIL: AHB(addr=0x%08x data=0x%08x) != APB(addr=0x%08x data=0x%08x)", UVM_LOW));
-            }
+        if (ahb_wr_addr == apb_wr_addr && ahb_wr_data == apb_wr_data)
+        {
+        uvm_info("SCOREBOARD", "PASS: AHB write matches APB write", UVM_LOW);
+}
+        else
+        {
+        uvm_error("SCOREBOARD", format("FAIL: AHB(addr=0x%08x data=0x%08x) != APB(addr=0x%08x data=0x%08x)", UVM_LOW));
+}
 
             // Reset for next transaction
             ahb_wr_valid = false;
             apb_wr_valid = false;
-        }
-    }
+}
+}
 
-    void write_apb_read(uint addr, uint data)
-    {
-        apb_rd_addr  = addr;
-        apb_rd_data  = data;
-        apb_rd_valid = true;
+       void write_apb_read(uint addr, uint data)
+       {
+       apb_rd_addr  = addr;
+       apb_rd_data  = data;
+       apb_rd_valid = true;
 
-        check_read();
-    }
+       check_read();
+}
 
    
-    void write_ahb_read(uint addr, uint data)   //Ahb Read 
-    {
-        ahb_rd_addr  = addr;
-        ahb_rd_data  = data;
-        ahb_rd_valid = true;
+       void write_ahb_read(uint addr, uint data)   //Ahb Read 
+       {
+       ahb_rd_addr  = addr;
+       ahb_rd_data  = data;
+       ahb_rd_valid = true;
 
-        check_read();
-    }
+       check_read();
+}
 
-    void check_read()
-    {
-        if (ahb_rd_valid && apb_rd_valid)
-        {
-            if (ahb_rd_addr == apb_rd_addr && ahb_rd_data == apb_rd_data)
-            {
-                uvm_info("SCOREBOARD", "PASS: READ APB AHB matched", UVM_LOW);
-            }
-            else
-            {
-                uvm_error("SCOREBOARD", "FAIL: READ mismatch APB vs AHB");
-            }
+       void check_read()
+       {
+       if (ahb_rd_valid && apb_rd_valid)
+       {
+       if (ahb_rd_addr == apb_rd_addr && ahb_rd_data == apb_rd_data)
+       {
+       uvm_info("SCOREBOARD", "PASS: READ APB AHB matched", UVM_LOW);
+       }
+       else
+       {
+       uvm_error("SCOREBOARD", "FAIL: READ mismatch APB vs AHB");
+       }
 
-            ahb_rd_valid = false;
-            apb_rd_valid = false;
-        }
-    }
+       ahb_rd_valid = false;
+       apb_rd_valid = false;
+}
+}
 }

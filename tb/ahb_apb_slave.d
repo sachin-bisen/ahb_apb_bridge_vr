@@ -10,7 +10,7 @@ class ahb_apb_slave : uvm_component
     ahb_apb_intf apb_if;
 
     
-    uint [uint]mem;  //simple memory
+    uint [uint]mem;  // memory
 
     this(string name, uvm_component parent = null)
     {
@@ -30,7 +30,7 @@ class ahb_apb_slave : uvm_component
     {
     apb_if.P_RDATA = 0;
     continue;
-    }
+}
 
     if (apb_if.P_SELx == 1 && apb_if.P_ENABLE == 1)
     {
@@ -38,18 +38,17 @@ class ahb_apb_slave : uvm_component
     {
     mem[apb_if.P_ADDR] = apb_if.P_WDATA;
 
-     uvm_info("APB_SLAVE", format("WRITE mem[0x%08x] = 0x%08x",
-                      apb_if.P_ADDR, apb_if.P_WDATA), UVM_MEDIUM);
-     } else {
-       	     if (apb_if.P_ADDR in mem)    //Read 
-                        apb_if.P_RDATA = mem[apb_if.P_ADDR];
-     else
-         apb_if.P_RDATA = 0;
+    uvm_info("APB_SLAVE", format("WRITE mem[0x%08x] = 0x%08x", apb_if.P_ADDR, apb_if.P_WDATA), UVM_MEDIUM);
+}   else {
+    if (apb_if.P_ADDR in mem)    //Read 
+    apb_if.P_RDATA = mem[apb_if.P_ADDR];
+    else
+    apb_if.P_RDATA = 0;
 
-     uvm_info("APB_SLAVE",format("READ  mem[0x%08x]
-     0x%08x", apb_if.P_ADDR, apb_if.P_RDATA), UVM_MEDIUM);
-                }
-            }
-        }
-    }
+    uvm_info("APB_SLAVE",format("READ  mem[0x%08x]
+    0x%08x", apb_if.P_ADDR, apb_if.P_RDATA), UVM_MEDIUM);
+}
+}
+}
+}
 }

@@ -12,7 +12,7 @@ class ahb_apb_monitor: uvm_component
 
 	this(string name, uvm_component parent = null) {
 	super(name, parent);
-       uvm_config_db!ahb_apb_intf.get(this, "", "ahb_if", ahb_if);
+        uvm_config_db!ahb_apb_intf.get(this, "", "ahb_if", ahb_if);
 	assert(ahb_if !is null);
 }
 
@@ -23,7 +23,7 @@ class ahb_apb_monitor: uvm_component
 	wait(ahb_if.H_CLK.posedge());
 
 	if(ahb_if.P_SELx == 1 && ahb_if.P_ENABLE == 0) {
-		monitor_setup_phase();
+	monitor_setup_phase();
 
 }
 }
@@ -38,25 +38,25 @@ class ahb_apb_monitor: uvm_component
 	addr = ahb_if.P_ADDR;
 	is_write = (ahb_if.P_WRITE == 1);
 
-	 uvm_info("APB_MON", format("APB SETUP  | addr=0x%08x write=%0d", addr, is_write), UVM_MEDIUM);
+	uvm_info("APB_MON", format("APB SETUP  | addr=0x%08x write=%0d", addr, is_write), UVM_MEDIUM);
 
-	 wait(ahb_if.H_CLK.posedge());
+        wait(ahb_if.H_CLK.posedge());
 
-	 if(ahb_if.P_SELx == 1 && ahb_if.P_ENABLE == 1) {    // wait for access phase 
+        if(ahb_if.P_SELx == 1 && ahb_if.P_ENABLE == 1) {    // wait for access phase 
 
-	if (is_write) {
+        if (is_write) {
 
-	data = ahb_if.P_WDATA;
+        data = ahb_if.P_WDATA;
 
-	 uvm_info("APB_MON", format("APB WRITE | addr=0x%08x data=0x%08x", addr, data),  UVM_MEDIUM);
+        uvm_info("APB_MON", format("APB WRITE | addr=0x%08x data=0x%08x", addr, data),  UVM_MEDIUM);
 	
-} else {
+}       else {
         data = ahb_if.P_RDATA;
 
-      uvm_info("APB_MON", format("APB READ  | addr=0x%08x data=0x%08x", addr, data), UVM_MEDIUM);
+        uvm_info("APB_MON", format("APB READ  | addr=0x%08x data=0x%08x", addr, data), UVM_MEDIUM);
 }
-} /*  else {
-    uvm_warning("APB_MON", "ACCESS phase not detected correctly");
-} */
+}       else {
+        uvm_warning("APB_MON", "ACCESS phase not detected correctly");
+}
 }
 }
